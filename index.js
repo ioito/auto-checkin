@@ -10,7 +10,7 @@ async function start() {
   Msg.push(`---------`)
   Msg.push(`启动任务`)
 
-  await new MoFish().init()
+  // await new MoFish().init()
   await new JueJin().init()
 
   console.log(Msg.getMsg())
