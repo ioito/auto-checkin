@@ -24,4 +24,5 @@ jobs:
           MO_FISH_USERNAME: ${{ secrets.MO_FISH_USERNAME }}
           MO_FISH_PASSWORD: ${{ secrets.MO_FISH_PASSWORD }}
           JUE_JIN_COOKIE: ${{ secrets.JUE_JIN_COOKIE }}
+          JUE_JIN_COOKIE2: ${{ secrets.JUE_JIN_COOKIE2 }}
           SERVER_J: ${{ secrets.SERVER_J }}
