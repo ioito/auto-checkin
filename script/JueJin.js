@@ -6,6 +6,7 @@ const formatResult = common.formatResult
 const Msg = common.Msg
 
 const JUE_JIN_COOKIE = config.JUE_JIN_COOKIE
+const JUE_JIN_COOKIE2 = config.JUE_JIN_COOKIE2
 
 class JueJin {
   checkUrl = `https://api.juejin.cn/growth_api/v1/check_in`
@@ -37,12 +38,25 @@ class JueJin {
       method: 'post',
       headers: {'cookie': JUE_JIN_COOKIE}
     })
+    
+    const res2 = await this.instance({
+      url: this.checkUrl, 
+      method: 'post',
+      headers: {'cookie': JUE_JIN_COOKIE2}
+    })
 
     try {
       if (res.status === 200) {
         return {
           status: res.data.err_no,
-          msg: '签到结果：' + res.data.err_msg,
+          msg: '1签到结果：' + res.data.err_msg,
+        }
+      }
+      
+      if (res2.status === 200) {
+        return {
+          status: res2.data.err_no,
+          msg: '2签到结果：' + res2.data.err_msg,
         }
       }
 
@@ -57,12 +71,25 @@ class JueJin {
       method: 'post',
       headers: {'cookie': JUE_JIN_COOKIE}
     })
+    
+    const res2 = await this.instance({
+      url: this.drawUrl, 
+      method: 'post',
+      headers: {'cookie': JUE_JIN_COOKIE2}
+    })
 
     try {
       if (res.status === 200) {
         return {
           status: res.data.err_no,
-          msg: '抽奖结果：' + (res.data.err_no === 0 ? res.data.data.lottery_name : res.data.err_msg),
+          msg: '1抽奖结果：' + (res.data.err_no === 0 ? res.data.data.lottery_name : res.data.err_msg),
+        }
+      }
+      
+      if (res2.status === 200) {
+        return {
+          status: res2.data.err_no,
+          msg: '2抽奖结果：' + (res2.data.err_no === 0 ? res2.data.data.lottery_name : res2.data.err_msg),
         }
       }
 
